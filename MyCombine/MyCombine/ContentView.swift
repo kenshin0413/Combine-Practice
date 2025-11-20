@@ -15,6 +15,14 @@ struct ContentView: View {
                 .textFieldStyle(.roundedBorder)
                 .padding()
             
+            Picker("並び替え", selection: $fruitVM.sortOption) {
+                ForEach(SortOption.allCases, id: \.self) { option in
+                    Text(option.rawValue)
+                }
+            }
+            .pickerStyle(.segmented)
+            .padding()
+            
             List {
                 ForEach(fruitVM.filteredFruits) { fruits in
                     Text(fruits.name)
